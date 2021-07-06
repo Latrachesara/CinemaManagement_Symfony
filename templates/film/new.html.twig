@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Film{% endblock %}
+
+{% block body %}
+    <style>
+        a {
+            color: white;
+        }
+        div
+        {
+            margin-left: 20px;
+            margin-right: 150px;
+        }
+    </style>
+    <br><br>
+    <h1>Create new Film</h1>
+    <br>
+    {{ include('film/_form.html.twig') }}
+
+    <button type="button" class="btn btn-secondary"><a href="{{ path('film_index') }}">back to list</a></button>
+    <br><br>
+{% endblock %}

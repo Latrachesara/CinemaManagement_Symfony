@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Realisateur{% endblock %}
+
+{% block body %}
+    <style>
+        a {
+            color: white;
+        }
+    </style>
+    <br><br>
+    <h1>Realisateur</h1>
+    <br>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ realisateur.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ realisateur.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ realisateur.prenom }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+<button type="button" class="btn btn-secondary"> <a href="{{ path('realisateur_index') }}">back to list</a></button>
+<br> <br>
+    <button type="button" class="btn btn-secondary"> <a href="{{ path('realisateur_edit', {'id': realisateur.id}) }}">edit</a></button>
+
+    {{ include('realisateur/_delete_form.html.twig') }}
+{% endblock %}

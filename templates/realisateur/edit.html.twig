@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Realisateur{% endblock %}
+
+{% block body %}
+    <style>
+        a {
+            color: white;
+        }
+        div
+        {
+            margin-left: 20px;
+            margin-right: 150px;
+        }
+    </style>
+    <br><br>
+    <h1>Edit Realisateur</h1>
+
+    {{ include('realisateur/_form.html.twig', {'button_label': 'Update'}) }}
+
+<br>
+    <button type="button" class="btn btn-secondary"><a href="{{ path('realisateur_index') }}">back to list</a></button>
+
+    {{ include('realisateur/_delete_form.html.twig') }}
+{% endblock %}

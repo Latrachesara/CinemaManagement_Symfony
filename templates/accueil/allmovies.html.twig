@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Films de notre cinéma {% endblock %}
+
+{% block body %}
+    <br> <br>
+<div class="container" >
+    <h1>Les Films disponible au cinéma</h1>
+    <br> <br>
+    <div class="row">
+        {% for film in films %}
+        <div class="col-md-3 my-3">
+            <div class="card h-100">
+                <img src="/tures/{{ film.couverture }}" class="img-thmbnail card-img-top">
+                <div class="card-body">
+                    <h4 class="card-title"> {{ film.titre }}</h4>
+                    <p>
+                        <b>Année :</b> {{ film.annee }}<br>
+                        <b>Durée :</b> {{ film.duree }}<br>
+                        <b>Catégorie :</b> {{ film.categorie.nom }}<br>
+                        <b>Réalisateurs :</b><br>
+                        {% for realisateur in film.realisateurs %}
+                        {{ realisateur.nom }} {{ realisateur.prenom }}<br>
+                        {% endfor %}
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% else %}
+            <h2>il n y'a aucun films dans cette catégorie.</h2>
+        {% endfor %}
+
+    </div>
+    <div class="navigation" style="margin: 20px auto; width: 300px; ">{{ knp_pagination_render(films) }}</div>
+
+</div>
+    <br> <br> <br> <br> <br>
+
+{% endblock %}

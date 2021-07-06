@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Film index{% endblock %}
+
+{% block body %}
+    <style>
+        a {
+            color: white;
+        }
+    </style>
+    <br><br>
+    <h1>Film </h1>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Numéro de Film</th>
+                <th>Titre</th>
+                <th>Année</th>
+                <th>Durée</th>
+                <th>Couverture</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for film in films %}
+            <tr>
+                <td>{{ film.id }}</td>
+                <td>{{ film.titre }}</td>
+                <td>{{ film.annee }}</td>
+                <td>{{ film.duree }}</td>
+                <td><p><img src="/tures/{{film.couverture}}" width="95px" height="150px"/></td>
+                <td>
+                    <button type="button" class="btn btn-warning"><a href="{{ path('film_show', {'id': film.id}) }}">show</a></button>
+                    <button type="button" class="btn btn-warning"><a href="{{ path('film_edit', {'id': film.id}) }}">edit</a></button>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <button type="button" class="btn btn-secondary"> <a href="{{ path('film_new') }}">Create new</a></button>
+<br><br><br>
+{% endblock %}
+
+

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Realisateur{% endblock %}
+
+{% block body %}
+    <style>
+        a {
+            color: white;
+        }
+        div
+        {
+            margin-left: 20px;
+            margin-right: 150px;
+        }
+    </style>
+    <br><br>
+    <h1>Create new Realisateur</h1>
+    <br>
+    {{ include('realisateur/_form.html.twig') }}
+    <br>
+    <button type="button" class="btn btn-secondary"><a href="{{ path('realisateur_index') }}">back to list</a></button>
+{% endblock %}

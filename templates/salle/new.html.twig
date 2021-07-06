@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Salle{% endblock %}
+
+{% block body %}
+    <style>
+        a {
+            color: white;
+        }
+        div
+        {
+            margin-left: 20px;
+            margin-right: 150px;
+        }
+    </style>
+    <br><br>
+    <h1>Create new Salle</h1>
+    <br><br>
+    {{ include('salle/_form.html.twig') }}
+
+    <button type="button" class="btn btn-secondary"> <a href="{{ path('salle_index') }}">back to list</a></button>
+
+{% endblock %}

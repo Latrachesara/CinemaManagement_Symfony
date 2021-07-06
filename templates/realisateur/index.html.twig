@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Realisateur index{% endblock %}
+
+{% block body %}
+    <style>
+        a {
+            color: white;
+        }
+    </style>
+    <br><br>
+    <h1>Les Realisateurs</h1>
+<br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for realisateur in realisateurs %}
+            <tr>
+                <td>{{ realisateur.id }}</td>
+                <td>{{ realisateur.nom }}</td>
+                <td>{{ realisateur.prenom }}</td>
+                <td>
+                    <button type="button" class="btn btn-warning"><a href="{{ path('realisateur_show', {'id': realisateur.id}) }}">show</a></button>
+                    <button type="button" class="btn btn-warning"><a href="{{ path('realisateur_edit', {'id': realisateur.id}) }}">edit</a></button>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <button type="button" class="btn btn-secondary"><a href="{{ path('realisateur_new') }}">Create new</a></button>
+    <br><br>
+{% endblock %}

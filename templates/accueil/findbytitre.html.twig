@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Rechercher un film par Année {% endblock %}
+
+{% block body %}
+    <style>
+        input{
+            margin-left: 20px;
+
+        }
+    </style>
+    <div class="container">
+        <br> <br>
+        <h1>
+            Rechercher un film par titre
+        </h1>
+        <br>
+        <form class="form-inline" method="post" action="{{ path('findbytitre') }}">
+            <label for="titre">Saisir le titre ou une partie du titre du film : </label> <br> <br>
+            <input for="titre" id="titre" type="titre" name="titre" class="form-control" value="{{ titre }}" required> <br>
+            <input type="submit" value="Rechercher" class="btn btn-secondary">
+
+        </form>
+        <div class="mt-3">
+            {% if films %}
+                <h2>Resultat de recherche avec {{ titre }}</h2>
+                <div class="row">
+                    {% for film in films %}
+                        <div class="col-md-3 my-3">
+                            <div class="card h-100">
+                                <img src="/tures/{{ film.couverture }}" class="img-thmbnail card-img-top">
+                                <div class="card-body">
+                                    <h4 class="card-title"> {{ film.titre }}</h4>
+                                    <p>
+                                        <b>Année :</b> {{ film.annee }}<br>
+                                        <b>Durée :</b> {{ film.duree }}<br>
+                                        <b>Catégorie :</b> {{ film.categorie.nom }}<br>
+                                        <b>Réalisateurs :</b><br>
+                                        {% for realisateur in film.realisateurs %}
+                                            {{ realisateur.nom }} {{ realisateur.prenom }}<br>
+                                        {% endfor %}
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    {% else %}
+                        <h2> =il n y'a aucun films dans cette catégorie.</h2>
+                    {% endfor %}
+
+                </div>
+                {% elseif etat == true %}
+                <h3> il n'y a aucun résultat qui correspond au titre {{ titre }}</h3>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+{% endblock %}

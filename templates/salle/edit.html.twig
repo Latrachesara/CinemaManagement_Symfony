@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Salle{% endblock %}
+
+{% block body %}
+<style>
+    a {
+        color: white;
+    }
+    div
+    {
+        margin-left: 20px;
+        margin-right: 150px;
+    }
+</style>
+<div>
+    <br>
+    <h1>Edit Salle</h1>
+
+    {{ include('salle/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <button type="button" class="btn btn-secondary"><a href="{{ path('salle_index') }}">back to list</a></button>
+
+    {{ include('salle/_delete_form.html.twig') }}
+{% endblock %}

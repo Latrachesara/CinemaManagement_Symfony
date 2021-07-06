@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="/images/logo.png" alt="" width="120" height="90"/>
+            </a>
+
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="navbar-brand" href="#">
+                    <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/accueil">Accueil</a>
+                    <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/allmovies">Tout les films</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               Rechercher les films
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="{{ path ('findbytitre') }}">Par Titre</a>
+                                <a class="dropdown-item" href="{{ path ('findbyannee') }}">Par Année</a>
+                            </div>
+                        </li>
+                        {% if app.user %}
+
+                    <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/categorie">Catégorie</a>
+                    <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/film">Film</a>
+                    <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/realisateur">Realisateur</a>
+                    <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/salle">Salle</a>
+                        {% endif %}
+                        {% if app.user %}
+
+                        <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/deconnexion">Déconnexion</a>
+                        {% else %}
+                        <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/connexion">Connexion</a>
+                        {% endif %}
+
+
+                    </a>
+                </div>
+            </div>
+        </div></div>
+    </nav>
+
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+    <style> body{
+            background-color: #FFA500;
+            align-content: center;
+        }
+        table{
+            background-color: #696969;
+
+            margin-right: 10px;
+        }
+        table td {
+            color: white;
+            font-size:24px;
+            text-align: center;
+            font-family: Monospace;
+        }
+        table th{
+            color: white;
+            font-size:28px;
+            font-family: Serif;
+            text-align: center;
+        }
+    </style>
+</html>
